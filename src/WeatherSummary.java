@@ -24,14 +24,24 @@ public class WeatherSummary {
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to weather checker!");
 
+        double minTemp = Double.MAX_VALUE;
+        double maxTemp = Double.MIN_VALUE;
+        double sumTemp = 0.0;
+        int count = 0;
+
         while (scan.hasNextDouble()){
-        Double temp = scan.nextDouble();
-        System.out.println("Temp is: " + temp);
-
+        double temp = scan.nextDouble();
         
-
+            if (temp < minTemp){
+                    minTemp = temp; 
+            }
+            if (temp > maxTemp) {
+                    maxTemp = temp;
+            }
         }
-        
-
+       
+        System.out.println("Min temp: " + minTemp);
+        System.out.println("Max temp: " + maxTemp);
+       }
     }
-}
+
