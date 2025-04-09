@@ -30,18 +30,25 @@ public class WeatherSummary {
         int count = 0;
 
         while (scan.hasNextDouble()){
-        double temp = scan.nextDouble();
-        
+            double temp = scan.nextDouble();
+            sumTemp += temp;
+            count++;
+            
             if (temp < minTemp){
-                    minTemp = temp; 
+                minTemp = temp; 
             }
             if (temp > maxTemp) {
-                    maxTemp = temp;
+                maxTemp = temp;
             }
         }
-       
-        System.out.println("Min temp: " + minTemp);
-        System.out.println("Max temp: " + maxTemp);
-       }
+        
+        if (count > 0){
+            double averageTemp = (sumTemp)/count;
+            System.out.println("Min temp: " + minTemp);
+            System.out.println("Max temp: " + maxTemp);
+            System.out.println("Average temp: " + averageTemp);
+        
+        }
     }
+}
 
