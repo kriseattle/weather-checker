@@ -17,38 +17,47 @@ public class WeatherSummary {
      * 
      * @param args command line arguments (ignored)
      */
-    public static void main(String[] args) {
-        // Implement this method!
-        // Hint: use Scanner. nextDouble() and hasNextDouble() will be helpful here!
 
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Welcome to weather checker!");
+     public static void main(String[] args) {
+            // Implement this method!
+            // Hint: use Scanner. nextDouble() and hasNextDouble() will be helpful here!
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Welcome to weather checker!");
 
-        double minTemp = Double.MAX_VALUE;
-        double maxTemp = Double.MIN_VALUE;
-        double sumTemp = 0.0;
-        int count = 0;
+            //Create a firstTemp that is from the temps file
+            double firstTemp = scan.nextDouble();
 
-        while (scan.hasNextDouble()){
-            double temp = scan.nextDouble();
-            sumTemp += temp;
-            count++;
-            
-            if (temp < minTemp){
-                minTemp = temp; 
+            //Set default values to firstTemp for comparasion
+            double minTemp = firstTemp;
+            double maxTemp = firstTemp;
+
+            //Ensuring that sumTemp has firstTemp in it
+            double sumTemp = firstTemp;
+
+            //Set count to 1 because the first temp has been read
+            int count = 1;
+
+            //Use while loop to go through every single value in the temps file
+            while (scan.hasNextDouble()){
+                  double temp = scan.nextDouble();
+                  sumTemp += temp;
+                  count++;
+                  
+                  if (temp < minTemp){
+                        minTemp = temp; 
+                  }
+                  if (temp > maxTemp) {
+                        maxTemp = temp;
+                  }
             }
-            if (temp > maxTemp) {
-                maxTemp = temp;
-            }
-        }
+      
+      //Calculate average and print out along with min and max
+      double averageTemp = sumTemp /count;
+      System.out.println("Min: " + minTemp);
+      System.out.println("Max: " + maxTemp);
+      System.out.println("Average: " + averageTemp);
+      scan.close();
         
-        if (count > 0){
-            double averageTemp = (sumTemp)/count;
-            System.out.println("Min temp: " + minTemp);
-            System.out.println("Max temp: " + maxTemp);
-            System.out.println("Average temp: " + averageTemp);
-        
-        }
     }
+    
 }
-
